@@ -19,12 +19,10 @@ class TradeClient(ApplicationSession):
     def onJoin(self, details):
         print("{} client session ready".format(self.exchange))
 
-        def marketEvent(args, kwargs, details):
-            print("marketEvent called")#: {}".format(pair))
-            
-            '''if event.get('type') == 'newTrade':
-                eventData = event.get('data')
-               ''' 
+        def marketEvent(event, **details):
+            #if event.get('type') != 'newTrade':
+            eventData = str(event.get('data'))            
+            print(list(details)[0] + ": " + eventData)
 
                 #{'data': {'total': '0.00735364', 'date': '2014-11-17 16:34:00', 'tradeID': '748138', 'amount': '5.0125', 'rate': '0.00146706', 'type': 'buy'}, 'type': 'newTrade'}
 
